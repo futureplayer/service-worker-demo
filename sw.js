@@ -2,8 +2,7 @@ var CACHE_NAME = 'example-v1';
 var urlsToCache = [
   'https://futureplayer.github.io/service-worker-demo/',
   'https://futureplayer.github.io/service-worker-demo/index.html',
-  'https://futureplayer.github.io/service-worker-demo/index.js',
-  'https://mipcache.bdstatic.com/static/v1/mip.js'
+  'https://futureplayer.github.io/service-worker-demo/index.js'
 ];
 self.addEventListener('install', function(event) {
 	event.waitUntil(
