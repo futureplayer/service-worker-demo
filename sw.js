@@ -20,10 +20,6 @@ self.addEventListener('fetch', function(event) {
 			  return response;
 			}
 			return fetch(event.request).then(function (response) {
-                if(!response || response.status !== 200 || response.type !== 'basic') {
-                  return response;
-                }
-                
 				var responseToCache = response.clone();
 				cachePromise.then(function(cache) {					
 					if (/mip.js/.test(event.request.url)) {
