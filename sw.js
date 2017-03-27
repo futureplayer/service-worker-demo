@@ -23,6 +23,7 @@ self.addEventListener('fetch', function(event) {
 				if (response) {
 				  return response;
 				}
+				console.log(event.request.url);
 				return fetch(event.request, {mode: 'cors'});
 			}
 		)
