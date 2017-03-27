@@ -27,6 +27,8 @@ self.addEventListener('fetch', function(event) {
 					} else {
 						cache.put(event.request, responseToCache);
 					}
+				}).catch(function (err) {
+					console.log(err);
 				});
 			});
 		})
