@@ -13,10 +13,10 @@ self.addEventListener('install', function(event) {
 			console.log('Opened cache');
 			return cache.addAll(urlsToCache.map(function(urlToPrefetch) {
 				if (/mip.js/.test(urlToPrefetch)) {
-					return new Request(urlToPrefetch);
+					return new Request(urlToPrefetch, { mode: 'no-cors' });
 				}
 				else {
-					return new Request(urlToPrefetch, { mode: 'no-cors' });
+					return new Request(urlToPrefetch);
 				}			  
 			})).then(function() {
 			  console.log('All resources have been fetched and cached.');
