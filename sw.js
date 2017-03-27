@@ -17,16 +17,16 @@ self.addEventListener('fetch', function(event) {
 			  return response;
 			}
 			return fetch(event.request).then(function (response) {
-				var responseToCache = response.clone();					
+				var responseToCache = response.clone();
 				caches.open(CACHE_NAME).then(function(cache) {
 					console.log('Opened cache');
 					if (/mip.js/.test(event.request.url)) {
 						console.log(event.request.url);
 						var req = new Request(event.request.url, { mode: 'no-cors' });
-						cache.put(req, responseToCache);	
+						cache.put(req, responseToCache);
 					} else {
 						cache.put(event.request, responseToCache);
-					}						
+					}
 				});
 			});
 		});
