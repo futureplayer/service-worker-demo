@@ -1,10 +1,10 @@
 var CACHE_NAME = 'example-v1';
 var urlsToCache = [
-  'https://futureplayer.github.io/service-worker-demo/',
-  'https://futureplayer.github.io/service-worker-demo/index.html',
-  'https://futureplayer.github.io/service-worker-demo/index.js',
-  'https://mipcache.bdstatic.com/static/v1/mip.js',
-  'https://farm3.staticflickr.com/2916/14632988974_b3fe4012b8.jpg'
+	'https://futureplayer.github.io/service-worker-demo/',
+	'https://futureplayer.github.io/service-worker-demo/index.html',
+	'https://futureplayer.github.io/service-worker-demo/index.js',
+	'https://farm3.staticflickr.com/2916/14632988974_b3fe4012b8.jpg',
+	'https://mipcache.bdstatic.com/static/v1/mip.js'
 ];
 self.addEventListener('install', function(event) {
 });
