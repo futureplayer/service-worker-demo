@@ -6,7 +6,10 @@ var urlsToCache = [
 	'https://farm3.staticflickr.com/2916/14632988974_b3fe4012b8.jpg',
 	'https://mipcache.bdstatic.com/static/v1/mip.js'
 ];
+var cachePromise;
 self.addEventListener('install', function(event) {
+	cachePromise = caches.open(CACHE_NAME);
+	console.log('Opened cache');
 });
 
 self.addEventListener('fetch', function(event) {
@@ -18,8 +21,7 @@ self.addEventListener('fetch', function(event) {
 			}
 			return fetch(event.request).then(function (response) {
 				var responseToCache = response.clone();
-				caches.open(CACHE_NAME).then(function(cache) {
-					console.log('Opened cache');
+				cachePromise.then(function(cache) {					
 					if (/mip.js/.test(event.request.url)) {
 						console.log(event.request.url);
 						var req = new Request(event.request.url, { mode: 'no-cors' });
