@@ -7,22 +7,6 @@ var urlsToCache = [
   'https://farm3.staticflickr.com/2916/14632988974_b3fe4012b8.jpg'
 ];
 self.addEventListener('install', function(event) {
-	event.waitUntil(
-	caches.open(CACHE_NAME)
-		.then(function(cache) {
-			console.log('Opened cache');
-			return cache.addAll(urlsToCache.map(function(urlToPrefetch) {
-				if (/mip.js/.test(urlToPrefetch)) {
-					return new Request(urlToPrefetch, { mode: 'no-cors' });
-				}
-				else {
-					return new Request(urlToPrefetch);
-				}			  
-			})).then(function() {
-			  console.log('All resources have been fetched and cached.');
-			});
-		})
-	);
 });
 
 self.addEventListener('fetch', function(event) {
@@ -33,7 +17,19 @@ self.addEventListener('fetch', function(event) {
 				if (response) {
 				  return response;
 				}
-				return fetch(event.request);
+				return fetch(event.request).then(function (response) {
+					var responseToCache = response.clone();
+					
+					caches.open(CACHE_NAME).then(function(cache) {
+						console.log('Opened cache');
+						if (/mip.js/.test(event.request.url)) {
+							var req = new Request(event.request.url, { mode: 'no-cors' });
+							cache.put(req, responseToCache);	
+						} else {
+							cache.put(event.request, responseToCache);
+						}						
+				      });
+				});
 			}
 		)
 	);
