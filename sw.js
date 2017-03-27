@@ -24,7 +24,7 @@ self.addEventListener('fetch', function(event) {
 				  return response;
 				}
 				console.log(event.request.url);
-				return fetch(event.request, {mode: 'cors'});
+				return fetch(event.request, {mode: 'no-cors'});
 			}
 		)
 	);
