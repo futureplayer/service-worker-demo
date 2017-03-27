@@ -23,9 +23,11 @@ self.addEventListener('fetch', function(event) {
 					caches.open(CACHE_NAME).then(function(cache) {
 						console.log('Opened cache');
 						if (/mip.js/.test(event.request.url)) {
+							console.log(event.request.url);
 							var req = new Request(event.request.url, { mode: 'no-cors' });
 							cache.put(req, responseToCache);	
 						} else {
+							console.log(event.request.url);
 							cache.put(event.request, responseToCache);
 						}						
 				      });
