@@ -27,7 +27,8 @@ self.addEventListener('fetch', function(event) {
 						var req = new Request(event.request.url, { mode: 'no-cors' });
 						cache.put(req, responseToCache);
 					} else {
-						cache.put(event.request, responseToCache);
+						var req = new Request(event.request.url);
+						cache.put(req, responseToCache);
 					}
 				}).catch(function (err) {
 					console.log(err);
