@@ -21,18 +21,18 @@ self.addEventListener('fetch', function(event) {
 			}
 			return fetch(event.request).then(function (response) {
 				var responseToCache = response.clone();
-				cachePromise.then(function(cache) {					
-					if (/mip.js/.test(event.request.url)) {
-						console.log(event.request.url);
-						var req = new Request(event.request.url, { mode: 'no-cors' });
-						cache.put(req, responseToCache);
-					} else {
-						var req = new Request(event.request.url);
-						cache.put(req, responseToCache);
-					}
-				}).catch(function (err) {
-					console.log(err);
-				});
+// 				cachePromise.then(function(cache) {					
+// 					if (/mip.js/.test(event.request.url)) {
+// 						console.log(event.request.url);
+// 						var req = new Request(event.request.url, { mode: 'no-cors' });
+// 						cache.put(req, responseToCache);
+// 					} else {
+// 						var req = new Request(event.request.url);
+// 						cache.put(req, responseToCache);
+// 					}
+// 				}).catch(function (err) {
+// 					console.log(err);
+// 				});
 			});
 		})
 	);
