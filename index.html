@@ -1,15 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html mip>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-	<title>测试Service Worker</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <title>测试Service Worker</title>
+    <link rel="stylesheet" type="text/css" href="https://mipcache.bdstatic.com/static/v1/mip.css">
+    <link rel="canonical" href="对应的原页面地址">    
 </head>
-
 <body>
     <p>MIP是百度在2016年提出的移动网页加速器项目，能帮助站长和网站开发者快速搭建移动端页面，从前端渲染和页面网络传输两方面进行优化，杜绝页面渲染中的阻塞问题，提升页面展现速度。</p>
-	<img src="https://farm3.staticflickr.com/2916/14632988974_b3fe4012b8.jpg">
-	<script type="text/javascript" src="https://futureplayer.github.io/service-worker-demo/index.js"></script>
-	<script src="https://mipcache.bdstatic.com/static/v1/mip.js"></script>
+    <mip-img
+        layout="responsive" 
+        width="350" 
+        height="263" 
+        popup
+        src="https://farm3.staticflickr.com/2916/14632988974_b3fe4012b8.jpg">
+    </mip-img>
+    <mip-video poster="https://placehold.it/640x360" controls
+      layout="responsive" width="640" height="360" 
+      src="https://gss0.bdstatic.com/-b1Caiqa0d9Bmcmop9aC2jh9h2w8e4_h7sED0YQ_t9iCPK/mda-gjkt21pkrsd8ae5y/mda-gjkt21pkrsd8ae5y.mp4">
+    </mip-video>
+    <script src="https://mipcache.bdstatic.com/static/v1/mip.js"></script>
 </body>
 </html>
